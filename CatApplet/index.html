@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <title>Cat Test Applet</title>
+    <link rel="icon" type="image/gif" href="favicon.gif">
+</head>
+
+<style>
+    .centered {
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<body>
+    <h1 class="centered">Boop the kitty!!</h1>
+    <img oncontextmenu="return false;" 
+        ontouchstart="play(); meow();" ontouchend="meowReset();" 
+        id="kitty" class="centered " usemap="#kittyMap" src="before.png">
+    <map name="kittyMap" oncontextmenu="return false;">
+        <area onpointerdown="play(); meow()"  value="PLAY" onpointerup="meowReset()"
+        coords="282,424,349,459" shape="rect">
+    </map>
+    <audio id="meow" src="meow.mp3"></audio>
+    <script>
+        function play() {
+            const origAudio = document.getElementById("meow");
+            const newAudio = origAudio.cloneNode();
+            newAudio.play()
+        }
+
+        var image = document.getElementById("kitty");				
+		function meow() {
+            if (image.getAttribute('src') == "before.png") {
+                image.src = "after.png";
+            } else {
+                image.src = "after.png";
+            }
+        }
+		
+        var image = document.getElementById("kitty");
+        function meowReset() {
+            if (image.getAttribute('src') == "after.png") {
+                image.src = "before.png";
+            } else {
+                image.src = "before.png";
+            }
+        }
+														
+    </script>
+</body>
+</html>
